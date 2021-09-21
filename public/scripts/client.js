@@ -21,7 +21,8 @@ const data = [
     "user": {
       "name": "Descartes",
       "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
+      "handle": "@rd"
+    },
     "content": {
       "text": "Je pense , donc je suis"
     },
@@ -35,7 +36,7 @@ const data = [
 //     const avatars = tweet.user.avatars;
 //     const handle = tweet.user.handle;
 //     const content = tweet.content.text;
-    
+
 //     const created = moment(tweet.created_at).fromNow();
 //     let $tweet = 
 //     `<section class="kuro">
@@ -70,22 +71,22 @@ const data = [
 $(document).ready(function () {
 
 
-const renderTweets = function(data) {
-  data.forEach((tweets) => {
-    console.log("look at me", tweets)
-    const $tempData = createTweetElement(tweets);
-    $('#tweets-container').prepend($tempData);
-  });
-  $(this).val('');
-};
+  const renderTweets = function (data) {
+    data.forEach((tweets) => {
+      console.log("look at me", tweets)
+      const $tempData = createTweetElement(tweets);
+      $('#tweets-container').prepend($tempData);
+    });
+    $(this).val('');
+  };
 
-const createTweetElement = function(tweet) {
+  const createTweetElement = function (tweet) {
     const name = tweet.user.name;
     const avatars = tweet.user.avatars;
     const handle = tweet.user.handle;
     const content = tweet.content.text;
     const created = moment(tweet.created_at).fromNow()
-  let $tweet = `<section class="kuro">
+    let $tweet = `<section class="kuro">
       <header id="tweetHeader">
       <div id="avatarName">
       <img src="${avatars}"/> 
@@ -105,10 +106,22 @@ const createTweetElement = function(tweet) {
       </div> 
       </footer>
       </section>`;
-      return $tweet;    
-    }
+    return $tweet;
+  }
+  $('#tweetForm').on('submit', function (event) {
 
-renderTweets(data)
+    event.preventDefault();  //prevent form from submitting
+    console.log("good job on pressing a button!")
+    const data = $("#tweet-text :input").serializeArray();
+    console.log("debugt", event); //use the console for debugging, F12 in Chrome, not alerts
+  });
+
+  const loadTweets = function() {
+    
+  }
+
+
+  renderTweets(data)
 })
 
 //test
