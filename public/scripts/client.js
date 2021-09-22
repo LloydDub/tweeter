@@ -30,98 +30,64 @@ const data = [
   }
 ]
 
-// $(document).ready(function () {
-//   function createTweetElement(tweet) {
-//     const name = tweet.user.name;
-//     const avatars = tweet.user.avatars;
-//     const handle = tweet.user.handle;
-//     const content = tweet.content.text;
-
-//     const created = moment(tweet.created_at).fromNow();
-//     let $tweet = 
-//     `<section class="kuro">
-//     <header id="tweetHeader">
-//     <div id="avatarName">
-//     <img src="${avatars}"/> 
-//     <p>${name}</p>
-//     </div>  
-//     <p id="handle">${handle}</p>    
-//     </header>
-//     <article id="article">
-//       ${content}  
-//     </article> 
-//     <footer class='footer'>
-//     ${created}
-//     <div>
-//       <i class="fas fa-flag"></i>
-//       <i class="fas fa-retweet"></i>
-//       <i class="fas fa-heart"></i>
-//     </div> 
-//     </footer>`;
-//     return $tweet;    
-//   };
-// const $tweet = createTweetElement(initalTweets[0]);
-// const $tweet2 = createTweetElement(initalTweets[1]);
-
-//   $('#tweets-container').prepend($tweet); 
-//   $('#tweets-container').prepend($tweet2);// to add it to the page so we can make sure it's got all the right elements, classes, etc.
-// })
 
 
 $(document).ready(function () {
-
-
-  const renderTweets = function (data) {
-    data.forEach((tweets) => {
-      console.log("look at me", tweets)
-      const $tempData = createTweetElement(tweets);
-      $('#tweets-container').prepend($tempData);
-    });
-    $(this).val('');
-  };
-
-  const createTweetElement = function (tweet) {
-    const name = tweet.user.name;
-    const avatars = tweet.user.avatars;
-    const handle = tweet.user.handle;
-    const content = tweet.content.text;
-    const created = moment(tweet.created_at).fromNow()
-    let $tweet = `<section class="kuro">
-      <header id="tweetHeader">
-      <div id="avatarName">
-      <img src="${avatars}"/> 
-      <p>${name}</p>
-      </div>  
-      <p id="handle">${handle}</p>    
-      </header>
-      <article id="article">
-        ${content}  
-      </article> 
-      <footer class='footer'>
-      ${created}
-      <div>
-        <i class="fas fa-flag"></i>
-        <i class="fas fa-retweet"></i>
-        <i class="fas fa-heart"></i>
-      </div> 
-      </footer>
-      </section>`;
-    return $tweet;
-  }
-  $('#tweetForm').on('submit', function (event) {
-
-    event.preventDefault();  //prevent form from submitting
-    console.log("good job on pressing a button!")
-    const data = $("#tweet-text :input").serializeArray();
-    console.log("debugt", event); //use the console for debugging, F12 in Chrome, not alerts
-  });
-
-  const loadTweets = function() {
-    
-  }
-
+console.log("DOC READY!!")
+  $('#tweetForm').on('submit', onSubmit);
 
   renderTweets(data)
 })
 
-//test
+
+const onSubmit = function (event) {
+  event.preventDefault();  //prevent form from submitting
+  console.log("good job on pressing a button!")
+
+
+  const data = $(this).serialize();
+  console.log("data", data); //use the console for debugging, F12 in Chrome, not alerts
+  $.post("/tweets", data)
+    .then(()=>{
+
+    });
+    
+}
+
+const renderTweets = function (tweets) {
+  tweets.forEach((tweet) => {
+    console.log("look at me", tweet)
+    const $tempData = createTweetElement(tweet);
+    $('#tweets-container').prepend($tempData);
+  });
+
+};
+
+const createTweetElement = function (tweet) {
+  const name = tweet.user.name;
+  const avatars = tweet.user.avatars;
+  const handle = tweet.user.handle;
+  const content = tweet.content.text;
+  const created = moment(tweet.created_at).fromNow()
+  let $tweet = `<section class="kuro">
+    <header id="tweetHeader">
+    <div id="avatarName">
+    <img src="${avatars}"/> 
+    <p>${name}</p>
+    </div>  
+    <p id="handle">${handle}</p>    
+    </header>
+    <article id="article">
+      ${content}  
+    </article> 
+    <footer class='footer'>
+    ${created}
+    <div>
+      <i class="fas fa-flag"></i>
+      <i class="fas fa-retweet"></i>
+      <i class="fas fa-heart"></i>
+    </div> 
+    </footer>
+    </section>`;
+  return $tweet;
+}
