@@ -57,7 +57,7 @@ $(document).ready(function () {
     const name = tweet.user.name;
     const avatars = tweet.user.avatars;
     const handle = tweet.user.handle;
-    const content = tweet.content.text;
+    // const content = tweet.content.text;
     const created = moment(tweet.created_at).fromNow()
     let $tweet = `<section class="kuro">
       <header id="tweetHeader">
@@ -68,7 +68,7 @@ $(document).ready(function () {
       <p id="handle">${handle}</p>    
       </header>
       <article id="article">
-        ${content}  
+      ${escape(tweet.content.text)}
       </article> 
       <footer class='footer'>
       ${created}
@@ -81,3 +81,10 @@ $(document).ready(function () {
       </section>`;
     return $tweet;
   }
+  // ${content}${escape(tweet.content.text)}
+
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
