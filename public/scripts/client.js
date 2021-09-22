@@ -4,39 +4,39 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png"
+//       ,
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd"
+//     },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   }
+// ]
 
 
 
 $(document).ready(function () {
 console.log("DOC READY!!")
   $('#tweetForm').on('submit', onSubmit);
-
-  renderTweets(data)
+  loadTweets();
+  // renderTweets(data)
 })
 
 
@@ -51,30 +51,37 @@ const onSubmit = function (event) {
     .then(()=>{
 
     });
-    
+    loadTweets()
 }
 
 const renderTweets = function (tweets) {
   tweets.forEach((tweet) => {
     console.log("look at me", tweet)
-    const $tempData = createTweetElement(tweet);
+    const $tempData = createTweetElement(tweet);   
     $('#tweets-container').prepend($tempData);
+   
+    
   });
 
 };
 
   function loadTweets() {
+    $('#tweets-container').empty()  // empties the container so there is not duplicates
+    
+    console.log('loadtweets' )
     $.ajax({
       url: "/tweets",
       method: "GET",
-      data: data,
+      // data: data,
       dataType: "json",
-      success: function (data) {
-        renderTweets(data);
+      success:  (tweet) => {
+        console.log('succsess', tweet)
+        renderTweets(tweet);
+        
       }
     });
   }
-  loadTweets();
+  
 
 
 const createTweetElement = function (tweet) {
