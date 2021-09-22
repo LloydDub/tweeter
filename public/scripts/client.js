@@ -63,6 +63,20 @@ const renderTweets = function (tweets) {
 
 };
 
+  function loadTweets() {
+    $.ajax({
+      url: "/tweets",
+      method: "GET",
+      data: data,
+      dataType: "json",
+      success: function (data) {
+        renderTweets(data);
+      }
+    });
+  }
+  loadTweets();
+
+
 const createTweetElement = function (tweet) {
   const name = tweet.user.name;
   const avatars = tweet.user.avatars;
