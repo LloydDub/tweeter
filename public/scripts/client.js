@@ -1,26 +1,32 @@
 $(document).ready(function () {
-  console.log("DOC READY!!")
+loadTweets();
+ 
     $('#tweetForm').on('submit', onSubmit);
-    loadTweets();
+    
     // renderTweets(data)
   })
   
   
   const onSubmit = function (event) {
-    event.preventDefault();  //prevent form from submitting
+    event.preventDefault();
+    $("#error1").text("")
+ 
     console.log("good job on pressing a button!")
-  
-  
+    
     const data = $(this).serialize();
-    if (data.length > 140) {
-      alert('tweet to long')
-      return;
+    console.log("!!!", data)
+    if (data.length > 145) {
+      $("#error1").text("To long")
+      return false;
+    } else if (data.length < 6) {
+      $("#error1").text("To short")
+      return false
     }
     $.post("/tweets", data)
       .then(()=>{
-  
+        loadTweets()
       });
-      loadTweets()
+      
   }
   
   const renderTweets = function (tweets) {
