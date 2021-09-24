@@ -1,3 +1,4 @@
+
 .new-tweet {
   display: flex;
   flex-direction: column;
@@ -12,12 +13,13 @@ justify-content: space-between;
 
 }
 
+
 #tweet-text {
   color: white;
   background-color: #56A140;
   margin: 0px; 
-  width: 800px; 
-  height: 40px;
+  width: 610px; 
+  height: 120px;
   border-top: 0;
   border-left: 0;
   border-right: 0;  
@@ -46,3 +48,24 @@ textarea {
   font-family: "Bungee", sans-serif;
 
 }
+
+#error1 {
+  margin-top: 50px;
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  .new-tweet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+  }
+  #tweet-text{
+    width: auto;
+    height: auto;
+  }
+
+}
+
+
