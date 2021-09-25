@@ -4,16 +4,14 @@
   height: 400px;
   width: auto;
   border-radius: 10px;
-  background-color: #A14056;
+  background-color: #a14056;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   background-image: url("https://www.transparenttextures.com/patterns/ag-square.png");
 }
 
-
-@media only screen and (max-width : 1024px) {
-
+@media only screen and (max-width: 1024px) {
   #topheader {
     margin-top: 115px;
   }

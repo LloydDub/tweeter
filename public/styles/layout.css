@@ -3,11 +3,13 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
- 
- html {
+
+html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -15,55 +17,42 @@
  * Global layout stuff
  */
 
-
-
 body {
   color: white;
-  background-color: #56A140;
+  background-color: #56a140;
   font-size: 24px;
   display: flex;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   height: auto;
   flex-direction: row;
   align-content: center;
-
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
-
- main {
-   display: flex;
+main {
+  display: flex;
   color: white;
-  background-color: #56A140;
-  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #56a140;
+  font-family: "Source Sans Pro", sans-serif;
   flex-direction: column;
   align-items: center;
-  
+
   padding-left: 15%;
   padding-right: 5%;
-  
-  
- }
-
-@media only screen and (max-width : 1000px) {
-
-main {
-  padding-left: 5%;
 }
 
+@media only screen and (max-width: 1000px) {
+  main {
+    padding-left: 5%;
+  }
 }
 
- @media only screen and (max-width : 915px) {
+@media only screen and (max-width: 915px) {
   body {
     display: flex;
     flex-direction: column;
   }
-
 }
-
-
-
-
