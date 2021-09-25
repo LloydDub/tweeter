@@ -1,6 +1,6 @@
 #topheader {
   display: flex;
-  padding-top: 520px;
+  margin-top: 150px;
   height: 400px;
   width: auto;
   border-radius: 10px;
@@ -9,4 +9,12 @@
   justify-content: flex-end;
   align-items: center;
   background-image: url("https://www.transparenttextures.com/patterns/ag-square.png");
+}
+
+
+@media only screen and (max-width : 1024px) {
+
+  #topheader {
+    margin-top: 115px;
+  }
 }

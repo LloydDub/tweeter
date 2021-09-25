@@ -1,5 +1,6 @@
 
 .new-tweet {
+  margin-top: 110px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,9 +50,12 @@ textarea {
 
 }
 
-#error1 {
-  margin-top: 50px;
+.errors {
+  font-family: "Bungee", sans-serif;
+  color: rgb(253, 0, 0);
 }
+
+
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {

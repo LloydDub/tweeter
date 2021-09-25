@@ -1,26 +1,36 @@
+
+
 $(document).ready(function () {
+$("#error1").hide();
+$("#error2").hide();
 loadTweets();
- 
-    $('#tweetForm').on('submit', onSubmit);
+     $('#tweetForm').on('submit', onSubmit);
     
     // renderTweets(data)
   })
-  
-  
+
+ 
   const onSubmit = function (event) {
     event.preventDefault();
-    $("#error1").text("")
+    
+    $("#error1").hide();
+    $("#error2").hide();
+
+
  
     console.log("good job on pressing a button!")
     
     const data = $(this).serialize();
-    console.log("!!!", data)
+    
+
+
     if (data.length > 145) {
-      $("#error1").text("To long")
+      $("#error2").slideDown("slow")
       return false;
     } else if (data.length < 6) {
-      $("#error1").text("To short")
+      $("#error1").slideDown("slow")
       return false
+
     }
     $.post("/tweets", data)
       .then(()=>{

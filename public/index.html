@@ -85,7 +85,8 @@
 
     <h2>Compose Tweet</h2>
     <form id="tweetForm">
-      <span id="error1"></span>
+      <div class="errors" id="error1">To short</div>
+      <div class="errors" id="error2">To long</div>
       <textarea name="text" name="tweetText" placeholder="What are you humming about?" id="tweet-text"></textarea>
       <div id="divID">
         <button id="tweetTweet" type="submit">Tweet</button>
