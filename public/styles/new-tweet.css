@@ -6,7 +6,7 @@
   width: auto;
 }
 
-#divID {
+#buttonDiv {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -51,7 +51,7 @@ const createTweetElement = function (tweet) {
   const handle = tweet.user.handle;
   // const content = tweet.content.text;
   const created = moment(tweet.created_at).fromNow();
-  let $tweet = `<section class="kuro">
+  let $tweet = `<section class="renderedTweets">
       <header id="tweetHeader">
       <div id="avatarName">
       <img src="${avatars}"/> 

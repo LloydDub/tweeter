@@ -1,7 +1,6 @@
-.kuro {
+.renderedTweets {
   margin-top: 1em;
   border-color: #131313;
-
   border-width: thin;
   border-style: solid;
   width: auto;
@@ -49,7 +48,7 @@ footer {
 #tweetHeader {
   margin-right: 5%;
   margin-left: 5%;
-
+  margin-top: 2%;
   display: flex;
   justify-content: space-between;
 }
