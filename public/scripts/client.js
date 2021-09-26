@@ -22,6 +22,7 @@ const onSubmit = function (event) {
 
   $.post("/tweets", data).then(() => {
     loadTweets();
+    location.reload();
   });
 };
 

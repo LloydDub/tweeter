@@ -3,8 +3,9 @@
   border-color: #131313;
   border-width: thin;
   border-style: solid;
-  width: auto;
+  overflow-wrap: break-word;
   height: auto;
+  width: 610px;
 }
 
 #avatarName {
@@ -25,12 +26,15 @@ i:hover {
 }
 
 article {
-  display: flex;
+  overflow-wrap: break-word;
+
   border-bottom: solid;
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
 
+  flex-wrap: wrap;
+  height: auto;
   flex-direction: row;
   justify-content: center;
   border-color: #131313;

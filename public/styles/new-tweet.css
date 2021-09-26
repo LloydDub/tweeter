@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
+  width: 90%;
+  height: auto;
 }
 
 #buttonDiv {
