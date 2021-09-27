@@ -12,10 +12,12 @@ const onSubmit = function (event) {
 
   const data = $(this).serialize();
 
-  if (data.length > 145) {
+  const tweetSent = $("#tweet-text").val();
+
+  if (tweetSent.length > 140) {
     $("#error2").slideDown("slow");
     return;
-  } else if (data.length < 6) {
+  } else if (tweetSent.length <= 0) {
     $("#error1").slideDown("slow");
     return;
   }
